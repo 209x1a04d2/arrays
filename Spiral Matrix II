@@ -1,0 +1,35 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] ans = new int[n][n];
+        int rs=0,re=n-1,cs=0,ce=n-1,dir=0,ele=1;
+        while(rs<=re && cs<=ce){
+            switch(dir){
+                case 0:
+                for(int i = cs;i<=ce;i++){
+                    ans[rs][i]=ele++;
+                }
+                rs++;dir=1;
+                break;
+                case 1:
+                for(int i = rs;i<=re;i++){
+                    ans[i][ce] = ele++;
+                }
+                ce--;dir=2;
+                break;
+                case 2:
+                for(int i = ce;i>=cs;i--){
+                    ans[re][i]=ele++;
+                }
+                re--;dir=3;
+                break;
+                case 3:
+                for(int i = re;i>=rs;i--){
+                    ans[i][cs] = ele++;
+                }
+                cs++;dir=0;
+                break;
+            }
+        }
+        return ans;
+    }
+}
